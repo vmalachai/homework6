@@ -15,5 +15,16 @@ export default function useAPI() {
         }
     }
 
+    const getQuestion = async (catergoryId) => {
+        const response = await instance.get('api.php', {
+            params: {
+                amount: 1, 
+                category: catergoryId,
+            }
+        })
+
+        return response.data.results[0]
+    }
+
     return {instance, categories, getCategories}
 }
